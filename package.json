@@ -1,0 +1,43 @@
+{
+    "name": "@dahaaw/hydrogen-review",
+    "version": "0.0.2",
+    "description": "",
+    "main": "dist/cjs/index.js",
+    "module": "dist/esm/index.js",
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "rm -rf dist/ && prettier --write src/ && npm run build:esm && npm run build:ejs",
+        "build:esm": "tsc",
+        "build:ejs": "tsc --module CommonJS --outDir dist/cjs"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/dahaaw/hydrogen-review.git"
+    },
+    "author": "dahaaw",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/dahaaw/hydrogen-review/issues"
+    },
+    "homepage": "https://github.com/dahaaw/hydrogen-review#readme",
+    "devDependencies": {
+        "@heroicons/react": "^2.0.12",
+        "@types/node": "^18.11.2",
+        "@types/react": "^18.0.21",
+        "@types/react-dom": "^18.0.6",
+        "css-loader": "^6.7.1",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "typescript": "^4.8.4"
+    },
+    "peerDependencies": {
+        "@smastrom/react-rating": "^1.1.1",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0"
+    },
+    "dependencies": {
+        "@headlessui/react": "^1.7.3"
+    }
+}
