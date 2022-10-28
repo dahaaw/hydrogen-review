@@ -19,7 +19,6 @@ export interface IWidgetListsProps {
 }
 export const WidgetLists: React.FunctionComponent<IWidgetListsProps> = (props) => {
     const [sortBy, setSortBy] = useState(sortLists[0]);
-    console.log({ aaaa: props.reviews });
     return (
         <div className="os-widget-review__lists" style={{ position: 'relative', paddingTop: '10px' }}>
             <div className="relative mt-1" style={{ position: 'absolute', minWidth: '200px', right: 0 }}>

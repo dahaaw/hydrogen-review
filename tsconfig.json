@@ -2,6 +2,8 @@
     "compilerOptions": {
         "allowSyntheticDefaultImports": true,
         "declaration": true,
+        "declarationDir": "types",
+        "emitDeclarationOnly": true,
         "esModuleInterop": true,
         "jsx": "react",
         "lib": ["ES5", "ES2015", "ES2016", "DOM", "ESNext"],

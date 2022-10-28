@@ -1,3 +1,3 @@
 export default {
-    APP_URL: 'https://eaab-182-3-41-183.ngrok.io'
+    APP_URL: 'https://38d1-2404-c0-2120-00-4-4f54.ngrok.io'
 };

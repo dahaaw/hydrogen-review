@@ -1,0 +1,18 @@
+.os-review-form label {
+    font-weight: bold;
+}
+
+.os-review-form__input-field {
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.os-review-form input {
+    background: transparent;
+    width: 500px;
+    max-width: 100%;
+}

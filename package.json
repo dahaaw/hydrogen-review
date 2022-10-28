@@ -1,14 +1,16 @@
 {
     "name": "@dahaaw/hydrogen-review",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "",
     "main": "dist/cjs/index.js",
     "module": "dist/esm/index.js",
+    "types": "dist/index.d.ts",
     "files": [
         "dist"
     ],
     "scripts": {
-        "build": "rm -rf dist/ && prettier --write src/ && npm run build:esm && npm run build:ejs",
+        "build": "rollup -c",
+        "build-old": "rm -rf dist/ && prettier --write src/ && npm run build:esm && npm run build:ejs",
         "build:esm": "tsc",
         "build:ejs": "tsc --module CommonJS --outDir dist/cjs"
     },
@@ -24,12 +26,22 @@
     "homepage": "https://github.com/dahaaw/hydrogen-review#readme",
     "devDependencies": {
         "@heroicons/react": "^2.0.12",
+        "@rollup/plugin-commonjs": "^20.0.0",
+        "@rollup/plugin-node-resolve": "^13.0.4",
+        "@rollup/plugin-typescript": "^8.3.3",
         "@types/node": "^18.11.2",
         "@types/react": "^18.0.21",
         "@types/react-dom": "^18.0.6",
         "css-loader": "^6.7.1",
+        "node-sass": "^7.0.3",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
+        "rollup": "^2.56.2",
+        "rollup-plugin-dts": "^3.0.2",
+        "rollup-plugin-peer-deps-external": "^2.2.4",
+        "rollup-plugin-postcss": "^4.0.1",
+        "rollup-plugin-terser": "^7.0.2",
+        "tslib": "^2.4.0",
         "typescript": "^4.8.4"
     },
     "peerDependencies": {
@@ -38,6 +50,7 @@
         "react-dom": "^18.2.0"
     },
     "dependencies": {
-        "@headlessui/react": "^1.7.3"
+        "@headlessui/react": "^1.7.3",
+        "uninstall": "^0.0.0"
     }
 }

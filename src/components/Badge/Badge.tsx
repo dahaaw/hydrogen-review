@@ -33,7 +33,7 @@ export const Badge: React.FunctionComponent<IBadgeProps> = (props) => {
     return (
         <div className="os-review-badge" style={{ display: 'flex', gap: '10px' }}>
             <div className="os-review-badge__star">
-                <Rating readOnly={true} value={rating} style={{ ...style }} />
+                <Rating readOnly={true} value={rating} style={{ ...style, maxWidth: 130 }} />
             </div>
             {showtext && (
                 <div className="os-review-badge__text" style={{ fontSize: '18px' }}>
