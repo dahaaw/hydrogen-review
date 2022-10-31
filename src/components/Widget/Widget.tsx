@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import './Widget.css';
 import cfg from '../../config';
 
 export interface IWidgetProps {
@@ -18,10 +18,8 @@ export const Widget: React.FunctionComponent<IWidgetProps> = (props) => {
     }, []);
 
     return (
-        <div className="os-review-widget" style={{ margin: '50px 0 80px' }}>
-            <div style={{ maxWidth: '90%', textAlign: 'center', margin: 'auto' }} className="os-review-widget__wrapper">
-                {React.Children.map(props.children, (child) => React.cloneElement(child, { reviews }))}
-            </div>
+        <div className="os-review-widget">
+            <div className="os-review-widget__wrapper">{React.Children.map(props.children, (child) => React.cloneElement(child, { reviews }))}</div>
         </div>
     );
 };

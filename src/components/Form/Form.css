@@ -1,8 +1,15 @@
+.os-review-form {
+    width: 500px;
+    max-width: 100%;
+    margin: 30px auto;
+}
+
 .os-review-form label {
     font-weight: bold;
 }
 
 .os-review-form__input-field {
+    position: relative;
     display: flex;
     gap: 15px;
     flex-direction: column;
@@ -11,8 +18,41 @@
     padding: 10px 0;
 }
 
-.os-review-form input {
+.os-review-form input,
+.os-review-form textarea {
     background: transparent;
-    width: 500px;
+    width: 100%;
     max-width: 100%;
+    border-radius: 0.25rem;
+}
+
+.os-review-form textarea {
+    height: 100px;
+}
+
+.os-form-messages {
+    position: absolute;
+    right: 15px;
+    color: red;
+}
+
+.os-form-messages-textarea {
+    top: 20px;
+}
+.os-review-form__action-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+}
+
+.os-btn {
+    border: 1px solid #6b7280;
+    border-radius: 0.25rem;
+    padding: 8px 20px;
+}
+
+.os-btn:hover {
+    opacity: 80%;
+    box-shadow: 0 8px 6px -6px black;
 }

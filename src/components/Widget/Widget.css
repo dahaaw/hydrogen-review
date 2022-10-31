@@ -1,0 +1,9 @@
+.os-review-widget__wrapper {
+    max-width: 90%;
+    text-align: center;
+    margin: auto;
+}
+
+.os-review-widget {
+    margin: 50px 0 80px;
+}

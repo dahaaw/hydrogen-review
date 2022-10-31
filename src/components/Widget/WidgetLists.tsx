@@ -21,7 +21,7 @@ export const WidgetLists: React.FunctionComponent<IWidgetListsProps> = (props) =
     const [sortBy, setSortBy] = useState(sortLists[0]);
     return (
         <div className="os-widget-review__lists" style={{ position: 'relative', paddingTop: '10px' }}>
-            <div className="relative mt-1" style={{ position: 'absolute', minWidth: '200px', right: 0 }}>
+            <div className="" style={{ position: 'absolute', minWidth: '200px', right: 0 }}>
                 <Listbox value={sortBy} onChange={setSortBy}>
                     <Listbox.Button
                         style={{ borderRadius: '4px' }}
@@ -69,7 +69,7 @@ export const WidgetLists: React.FunctionComponent<IWidgetListsProps> = (props) =
                     </div>
                 )}
                 {props.reviews.map((v: any) => (
-                    <div style={{ textAlign: 'left', margin: '20px 0' }}>
+                    <div style={{ textAlign: 'left', margin: '20px 0' }} key={v.id}>
                         <span style={{ fontSize: 'var(--font-size-lead)', fontWeight: 700 }}>{v.user_name}</span>
                         <Rating style={{ maxWidth: 130 }} readOnly={true} value={v.star} />
                         <span style={{ fontSize: 'var(--font-size-lead)', fontWeight: 700 }}>{v.title}</span>
