@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Rating } from '@smastrom/react-rating';
 
 import cfg from '../../config';
+import './Badge.css';
+import Star from '../Star';
 
 export interface IBadgeProps {
     showtext?: boolean;
@@ -31,17 +33,14 @@ export const Badge: React.FunctionComponent<IBadgeProps> = (props) => {
         reviewText = `Be the first to review`;
     }
     return (
-        <div className="os-review-badge" style={{ display: 'flex', gap: '10px' }}>
-            <div className="os-review-badge__star">
-                <Rating readOnly={true} value={rating} style={{ ...style, maxWidth: 130 }} />
+        <>
+            <div className="os-review-badge">
+                <Star />
+                <div className="os-review-badge__star"></div>
+                {showtext && <div className="os-review-badge__text">{reviewText}</div>}
             </div>
-            {showtext && (
-                <div className="os-review-badge__text" style={{ fontSize: '18px' }}>
-                    {reviewText}
-                </div>
-            )}
-            <style>{`.rr--box { --rr--fill-off-color: transparent !important }`}</style>
-        </div>
+            <Rating readOnly={true} value={rating} style={{ ...style, maxWidth: 130 }} />
+        </>
     );
 };
 
@@ -51,13 +50,13 @@ export const setReviewBadge: any = async (productId: any, osToken: string, setRa
     let id = productId?.split('/');
     if (id.length) id = id[id.length - 1];
 
-    let response: any = await fetch(`${cfg.APP_URL}/review/${osToken}?product_id=${id}`, {});
+    let response: any = await fetch(`${cfg.APP_URL}/review/${osToken}/${id}`, {});
     response = await response.json();
     if (!response.data?.length) return setRating(0);
     setTotalReview(response.data.length);
     let total = 0;
     for (const rev of response.data) {
-        total += rev.star;
+        total += rev.rating;
     }
     const average = total / response.data.length;
     setRating(average);

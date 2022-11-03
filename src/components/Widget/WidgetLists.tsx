@@ -20,8 +20,8 @@ export interface IWidgetListsProps {
 export const WidgetLists: React.FunctionComponent<IWidgetListsProps> = (props) => {
     const [sortBy, setSortBy] = useState(sortLists[0]);
     return (
-        <div className="os-widget-review__lists" style={{ position: 'relative', paddingTop: '10px' }}>
-            <div className="" style={{ position: 'absolute', minWidth: '200px', right: 0 }}>
+        <div className="os-widget-review__lists">
+            <div className="os-widget-review__lists-filter">
                 <Listbox value={sortBy} onChange={setSortBy}>
                     <Listbox.Button
                         style={{ borderRadius: '4px' }}
@@ -59,20 +59,20 @@ export const WidgetLists: React.FunctionComponent<IWidgetListsProps> = (props) =
                     </Transition>
                 </Listbox>
             </div>
-            <div style={{ marginTop: '50px' }}>
+            <div className="os-widget-review__lists-hr">
                 <hr />
             </div>
-            <div className="">
+            <div className="os-widget-review__lists-wrapper">
                 {!props.reviews.length && (
-                    <div style={{ textAlign: 'center', margin: '40px 0 20px' }}>
-                        <p style={{ fontSize: '18px' }}>Be the first to review this product</p>
+                    <div className="os-widget-review__lists-empty">
+                        <p>Be the first to review this product</p>
                     </div>
                 )}
                 {props.reviews.map((v: any) => (
-                    <div style={{ textAlign: 'left', margin: '20px 0' }} key={v.id}>
-                        <span style={{ fontSize: 'var(--font-size-lead)', fontWeight: 700 }}>{v.user_name}</span>
-                        <Rating style={{ maxWidth: 130 }} readOnly={true} value={v.star} />
-                        <span style={{ fontSize: 'var(--font-size-lead)', fontWeight: 700 }}>{v.title}</span>
+                    <div className="os-widget-review__list" key={v.id}>
+                        <span className="os-widget-review__name">{v.user_name}</span>
+                        <Rating style={{ maxWidth: 130 }} readOnly={true} value={v.rating} />
+                        <span className="os-widget-review__title">{v.title}</span>
                         <p>{v.review}</p>
                     </div>
                 ))}

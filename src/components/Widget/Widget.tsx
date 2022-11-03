@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import WidgetLists from './WidgetLists';
+import WidgetTitle from './WidgetTitle';
+
 import './Widget.css';
 import cfg from '../../config';
+
+type WidgetType = React.FunctionComponent<IWidgetProps> & {
+    Lists?: React.FC;
+    Title?: React.FC;
+};
 
 export interface IWidgetProps {
     showtext?: boolean;
@@ -11,28 +19,29 @@ export interface IWidgetProps {
     children: JSX.Element;
 }
 
-export const Widget: React.FunctionComponent<IWidgetProps> = (props) => {
+export const Widget: WidgetType = (props) => {
     const [reviews, setReviews] = useState([]);
     useEffect(() => {
         fillReviewWidget(props.productId, props.osToken, setReviews);
     }, []);
 
+    const fillReviewWidget: any = async () => {
+        let id = props.productId?.split('/');
+        if (id.length) id = id[id.length - 1];
+
+        let response: any = await fetch(`${cfg.APP_URL}/review/${props.osToken}/${id}`, {});
+        response = await response.json();
+        if (!response.data?.length) return;
+
+        setReviews(response.data);
+    };
+
     return (
         <div className="os-review-widget">
-            <div className="os-review-widget__wrapper">{React.Children.map(props.children, (child) => React.cloneElement(child, { reviews }))}</div>
+            <div className="os-review-widget__wrapper">{React.Children.map(props.children, (child) => React.cloneElement(child, { reviews, fillReviewWidget }))}</div>
         </div>
     );
 };
 
-export default Widget;
-
-export const fillReviewWidget: any = async (productId: any, osToken: string, setReviews: any) => {
-    let id = productId?.split('/');
-    if (id.length) id = id[id.length - 1];
-
-    let response: any = await fetch(`${cfg.APP_URL}/review/${osToken}?product_id=${id}`, {});
-    response = await response.json();
-    if (!response.data?.length) return;
-
-    setReviews(response.data);
-};
+Widget.Lists = WidgetLists;
+Widget.Title = WidgetTitle;

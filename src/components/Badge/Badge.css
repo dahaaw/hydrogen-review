@@ -1,0 +1,13 @@
+.os-review-badge {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.os-review-badge__text {
+    font-size: 18px;
+}
+
+.rr--box {
+    --rr--fill-off-color: transparent !important;
+}

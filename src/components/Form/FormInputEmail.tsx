@@ -8,7 +8,7 @@ export interface IFormInputEmail {
     placeholder?: any;
 }
 
-export const FormInputEmail: React.FunctionComponent<IFormInputEmail> = (props) => {
+const FormInputEmail: React.FunctionComponent<IFormInputEmail> = (props) => {
     return (
         <div className="os-review-form__input-email os-review-form__input-field">
             {props.label && <label>{props.label}</label>}
@@ -18,9 +18,11 @@ export const FormInputEmail: React.FunctionComponent<IFormInputEmail> = (props) 
                 onChange={(e) => props.setFormValue('email', e.target.value)}
                 name="email"
                 placeholder={props.placeholder}
-                style={props.formMessages?.email && { border: '1px solid red' }}
+                className={props.formMessages?.email && 'os-form-input-fail'}
             />
             {props.formMessages?.email && <span className="os-form-messages">{props.formMessages.email}</span>}
         </div>
     );
 };
+
+export default FormInputEmail;

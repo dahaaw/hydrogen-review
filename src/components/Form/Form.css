@@ -4,6 +4,11 @@
     margin: 30px auto;
 }
 
+.os-review-form__title h3 {
+    font-size: 150%;
+    font-weight: bold;
+}
+
 .os-review-form label {
     font-weight: bold;
 }
@@ -30,6 +35,10 @@
     height: 100px;
 }
 
+.os-form-input-fail {
+    border: 1px solid red;
+}
+
 .os-form-messages {
     position: absolute;
     right: 15px;
@@ -44,6 +53,7 @@
     justify-content: center;
     gap: 15px;
     width: 100%;
+    padding: 10px 0;
 }
 
 .os-btn {

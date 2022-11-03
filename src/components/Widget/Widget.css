@@ -7,3 +7,36 @@
 .os-review-widget {
     margin: 50px 0 80px;
 }
+
+/* Widget Lists */
+.os-widget-review__lists {
+    position: relative;
+    padding-top: 10px;
+}
+
+.os-widget-review__lists-filter {
+    position: absolute;
+    min-width: 200px;
+    right: 0;
+}
+
+.os-widget-review__lists-hr {
+    margin-top: 50px;
+}
+
+.os-widget-review__lists-empty {
+    text-align: center;
+    margin: 40px 0 20px;
+    font-size: 18px;
+}
+
+.os-widget-review__list {
+    text-align: left;
+    margin: 20px 0;
+}
+
+.os-widget-review__name,
+.os-widget-review__title {
+    font-size: var(--font-size-lead);
+    font-weight: 700;
+}

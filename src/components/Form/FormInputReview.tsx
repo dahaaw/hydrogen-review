@@ -8,7 +8,7 @@ export interface IFormInputReview {
     placeholder?: any;
 }
 
-export const FormInputReview: React.FunctionComponent<IFormInputReview> = (props) => {
+const FormInputReview: React.FunctionComponent<IFormInputReview> = (props) => {
     return (
         <div className="os-review-form__input-review os-review-form__input-field">
             {props.label && <label>{props.label}</label>}
@@ -17,9 +17,11 @@ export const FormInputReview: React.FunctionComponent<IFormInputReview> = (props
                 onChange={(e) => props.setFormValue('review', e.target.value)}
                 name="review"
                 placeholder={props.placeholder}
-                style={props.formMessages?.review && { border: '1px solid red' }}
+                className={props.formMessages?.review && 'os-form-input-fail'}
             />
             {props.formMessages?.review && <span className="os-form-messages os-form-messages-textarea">{props.formMessages.review}</span>}
         </div>
     );
 };
+
+export default FormInputReview;
