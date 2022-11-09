@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Rating } from '@smastrom/react-rating';
 
 import cfg from '../../config';
 import './Badge.css';
-import Star from '../Star';
+import Star from '../Atoms/Star';
 
 export interface IBadgeProps {
     showtext?: boolean;
@@ -32,14 +31,14 @@ export const Badge: React.FunctionComponent<IBadgeProps> = (props) => {
     } else {
         reviewText = `Be the first to review`;
     }
+
     return (
         <>
             <div className="os-review-badge">
-                <Star />
+                <Star readonly={true} rating={rating} />
                 <div className="os-review-badge__star"></div>
                 {showtext && <div className="os-review-badge__text">{reviewText}</div>}
             </div>
-            <Rating readOnly={true} value={rating} style={{ ...style, maxWidth: 130 }} />
         </>
     );
 };

@@ -6,7 +6,11 @@ export interface IWidgetTitleProps {
 }
 
 const WidgetTitle: React.FunctionComponent<IWidgetTitleProps> = (props) => {
-    return <h2 style={{ fontSize: 'var(--font-size-heading)', fontWeight: 700, marginBottom: '30px', ...props.style }}>{props.text || 'Customer Reviews'}</h2>;
+    return (
+        <h2 className="os-review-widget__title" style={{ ...props.style }}>
+            {props.text || 'Customer Reviews'}
+        </h2>
+    );
 };
 
 export default WidgetTitle;

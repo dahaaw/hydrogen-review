@@ -6,6 +6,7 @@ import FormInputReview, { IFormInputReview } from './FormInputReview';
 import FormInputName, { IFormInputName } from './FormInputName';
 import FormInputEmail, { IFormInputEmail } from './FormInputEmail';
 import FormAction, { IFormAction } from './FormAction';
+import FormInputImages, { IFormInputImages } from './FormInputImages';
 
 import './Form.css';
 import cfg from '../../config';
@@ -17,6 +18,7 @@ type FormType = React.FunctionComponent<IFormProps> & {
     InputReview: React.FC<IFormInputReview>;
     InputName: React.FC<IFormInputName>;
     InputEmail: React.FC<IFormInputEmail>;
+    InputImages: React.FC<IFormInputImages>;
     Action: React.FC<IFormAction>;
 };
 
@@ -65,7 +67,7 @@ export const Form: FormType = (props) => {
             title: formValues.title,
             review: formValues.review
         };
-        console.log({ reqBody });
+
         let response: any = await fetch(`${cfg.APP_URL}/review/${props.osToken}`, {
             method: 'POST',
             mode: 'cors',
@@ -75,9 +77,8 @@ export const Form: FormType = (props) => {
             body: JSON.stringify(reqBody)
         });
 
-        if (response) props.fillReviewWidget();
         setFormValues({ rating: 5 });
-        console.log(await response.json());
+        if (response) props.fillReviewWidget();
     };
     return (
         <form onSubmit={submitForm}>
@@ -92,4 +93,5 @@ Form.InputTitle = FormInputTitle;
 Form.InputReview = FormInputReview;
 Form.InputName = FormInputName;
 Form.InputEmail = FormInputEmail;
+Form.InputImages = FormInputImages;
 Form.Action = FormAction;

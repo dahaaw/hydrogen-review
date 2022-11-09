@@ -7,6 +7,7 @@
 .os-review-form__title h3 {
     font-size: 150%;
     font-weight: bold;
+    margin: 0;
 }
 
 .os-review-form label {
@@ -29,6 +30,8 @@
     width: 100%;
     max-width: 100%;
     border-radius: 0.25rem;
+    border: 1px solid #6b7280;
+    padding: 0.5rem 0.75rem;
 }
 
 .os-review-form textarea {
@@ -65,4 +68,11 @@
 .os-btn:hover {
     opacity: 80%;
     box-shadow: 0 8px 6px -6px black;
+}
+
+.os-review-form__input-image {
+    height: 100px;
+    width: 100px;
+    background: red;
+    opacity: 10%;
 }
