@@ -27,7 +27,7 @@ export const Widget: WidgetType = (props) => {
 
     useEffect(() => {
         fillReviewWidget(props.productId, props.osToken, setReviews);
-    }, [sortBy]);
+    }, [location, sortBy]);
 
     const fillReviewWidget: any = async () => {
         let id = props.productId?.split('/');
@@ -40,9 +40,8 @@ export const Widget: WidgetType = (props) => {
 
         setReviews(response.data);
         setSortLists(response.sorts);
-        setTimeout(() => {
-            setIsLoading(false);
-        }, 1500);
+
+        setIsLoading(false);
     };
 
     return (

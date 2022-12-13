@@ -27,6 +27,7 @@ export interface IFormProps {
     osToken: string;
     id: string;
     productId: string;
+    productTitle: string;
     fillReviewWidget: any;
 }
 
@@ -61,6 +62,7 @@ export const Form: FormType = (props) => {
         // submit action
         const reqBody = {
             product_id: props.productId,
+            product_title: props.productTitle,
             user_name: formValues.name,
             user_email: formValues.email,
             rating: formValues.rating,
@@ -78,7 +80,11 @@ export const Form: FormType = (props) => {
         });
 
         setFormValues({ rating: 5 });
-        if (response) props.fillReviewWidget();
+        if (response) {
+            props.fillReviewWidget();
+
+            if (window?.os_review_badge_update) window.os_review_badge_update();
+        }
     };
     return (
         <form onSubmit={submitForm}>

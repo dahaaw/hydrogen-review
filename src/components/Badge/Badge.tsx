@@ -12,18 +12,28 @@ export interface IBadgeProps {
     osToken: string;
 }
 
+declare global {
+    interface Window {
+        os_review_badge_update: any;
+    }
+}
+
 export const Badge: React.FunctionComponent<IBadgeProps> = (props) => {
     const [rating, setRating] = useState(0);
     const [totalReview, setTotalReview] = useState(0);
     const { showtext, starcolor, style } = props;
+    delete window.os_review_badge_update;
+    window.os_review_badge_update = () => setReviewBadge(props.productId, props.osToken, setRating, setTotalReview);
+    window.os_review_badge_update();
+
+    useEffect(() => {
+        setReviewBadge(props.productId, props.osToken, setRating, setTotalReview);
+        console.error('BADGE');
+    }, [rating, location]);
 
     let _style: React.CSSProperties = style || {};
 
     if (starcolor) _style.color = starcolor;
-
-    useEffect(() => {
-        setReviewBadge(props.productId, props.osToken, setRating, setTotalReview);
-    }, []);
 
     let reviewText;
     if (totalReview) {
@@ -59,4 +69,5 @@ export const setReviewBadge: any = async (productId: any, osToken: string, setRa
     }
     const average = total / response.data.length;
     setRating(average);
+    console.log({ average });
 };

@@ -1,6 +1,6 @@
 {
-    "name": "@dahaaw/hydrogen-review",
-    "version": "0.0.10",
+    "name": "@dahaaw/review-react",
+    "version": "0.0.3",
     "description": "",
     "main": "dist/cjs/index.js",
     "module": "dist/esm/index.js",
