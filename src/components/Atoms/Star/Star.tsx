@@ -24,6 +24,7 @@ const Star: React.FunctionComponent<IStarProps> = (props) => {
                         onClick={() => !props.readonly && setRating(index)}
                         onMouseEnter={() => !props.readonly && setHover(index)}
                         onMouseLeave={() => !props.readonly && setHover(rating)}
+                        style={props.readonly ? { cursor: 'default' } : {}}
                     >
                         <span className="star">
                             <svg

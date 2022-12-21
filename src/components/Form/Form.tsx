@@ -11,6 +11,12 @@ import FormInputImages, { IFormInputImages } from './FormInputImages';
 import './Form.css';
 import cfg from '../../config';
 
+declare global {
+    interface Window {
+        os_review_badge_update: any;
+    }
+}
+
 type FormType = React.FunctionComponent<IFormProps> & {
     Title: React.FC<IFormTitle>;
     InputRating: React.FC<IFormInputRating>;
@@ -23,12 +29,14 @@ type FormType = React.FunctionComponent<IFormProps> & {
 };
 
 export interface IFormProps {
-    children?: JSX.Element;
+    children?: JSX.Element | JSX.Element[];
     osToken: string;
-    id: string;
     productId: string;
     productTitle: string;
-    fillReviewWidget: any;
+    fillReviewWidget?: any;
+    showForm?: boolean;
+    setShowForm?: any;
+    formRef?: any;
 }
 
 export interface IFormValues {
@@ -40,6 +48,7 @@ export interface IFormValues {
 }
 
 export const Form: FormType = (props) => {
+    const { showForm, setShowForm, formRef } = props;
     const [formValues, setFormValues] = useState<IFormValues>({
         rating: 5
     });
@@ -87,8 +96,10 @@ export const Form: FormType = (props) => {
         }
     };
     return (
-        <form onSubmit={submitForm}>
-            <div className="os-review-form">{React.Children.map(props.children, (child: any) => React.cloneElement(child, { formValues, setFormValue, formMessages }))}</div>
+        <form ref={formRef} onSubmit={submitForm}>
+            <div className="os-review-form" style={{ maxHeight: showForm ? '500px' : '0px' }}>
+                {React.Children.map(props.children, (child: any) => React.cloneElement(child, { formValues, setFormValue, formMessages, setShowForm }))}
+            </div>
         </form>
     );
 };

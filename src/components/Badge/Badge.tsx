@@ -22,14 +22,16 @@ export const Badge: React.FunctionComponent<IBadgeProps> = (props) => {
     const [rating, setRating] = useState(0);
     const [totalReview, setTotalReview] = useState(0);
     const { showtext, starcolor, style } = props;
-    delete window.os_review_badge_update;
-    window.os_review_badge_update = () => setReviewBadge(props.productId, props.osToken, setRating, setTotalReview);
-    window.os_review_badge_update();
+
+    if (typeof window !== 'undefined') {
+        if (window.os_review_badge_update) delete window.os_review_badge_update;
+        window.os_review_badge_update = () => setReviewBadge(props.productId, props.osToken, setRating, setTotalReview);
+        window.os_review_badge_update();
+    }
 
     useEffect(() => {
         setReviewBadge(props.productId, props.osToken, setRating, setTotalReview);
-        console.error('BADGE');
-    }, [rating, location]);
+    }, [rating]);
 
     let _style: React.CSSProperties = style || {};
 
@@ -61,7 +63,11 @@ export const setReviewBadge: any = async (productId: any, osToken: string, setRa
 
     let response: any = await fetch(`${cfg.APP_URL}/review/${osToken}/${id}`, {});
     response = await response.json();
-    if (!response.data?.length) return setRating(0);
+    if (!response.data?.length) {
+        setRating(0);
+        setTotalReview(0);
+        return;
+    }
     setTotalReview(response.data.length);
     let total = 0;
     for (const rev of response.data) {

@@ -2,6 +2,8 @@
     width: 500px;
     max-width: 100%;
     margin: 30px auto;
+    overflow: hidden;
+    transition: all 0.3s ease-in;
 }
 
 .os-review-form__title h3 {

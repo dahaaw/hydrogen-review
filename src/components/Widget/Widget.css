@@ -57,3 +57,54 @@
 .os-widget-review__lists .star-rating {
     margin-top: 5px;
 }
+
+/* SUMMARY */
+.os-review-summary__wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.os-review-summary__item {
+    padding: 20px 0;
+}
+
+.os-review-summary__item + .os-review-summary__item {
+    border-left: solid 1.5px grey;
+}
+
+.os-review-summary__star {
+    width: 30%;
+}
+
+.os-review-summary__star .summary-star__wrapper {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+}
+
+.os-review-summary__star .summary-star-text {
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.os-review-summary__rating {
+    width: 40%;
+}
+
+.os-review-summary__action {
+    width: 30%;
+}
+
+.os-review-summary__rating-wrapper {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    width: 60%;
+    margin: auto auto 7px;
+}
+
+.os-review-summary__rating-count {
+    width: 20%;
+}
+/* SUMMARY */
